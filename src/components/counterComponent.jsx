@@ -20,8 +20,13 @@ class CounterComponent extends Component {
   //   handleIncrement() {
   //     console.log("Increment", this.state.count);
   //   }
-  handleIncrement = () => {
-    console.log("Increment", this);
+  handleIncrement = product => {
+    console.log(product);
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  doHandleIncrementWithArgs = () => {
+    this.handleIncrement({ id: 1 });
   };
 
   render() {
@@ -29,7 +34,8 @@ class CounterComponent extends Component {
       <React.Fragment>
         <span className={this.getBadgeClass()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          //onClick={this.doHandleIncrementWithArgs}
+          onClick={() => this.handleIncrement({ id: 1 })}
           className="btn btn-secondary btn-sm"
         >
           Increment
